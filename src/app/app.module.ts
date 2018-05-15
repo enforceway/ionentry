@@ -9,17 +9,16 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import declarationList from '../config/declaration.list';
+import providers from "../config/provider.list";
+// import { HttpModule } from '@angular/http';
 
 @NgModule({
-  declarations: [
-    MyApp,
-    HelloIonicPage,
-    ItemDetailsPage,
-    ListPage
-  ],
+  declarations: declarationList,
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    // HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -28,10 +27,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ItemDetailsPage,
     ListPage
   ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+  providers: providers
 })
 export class AppModule {}

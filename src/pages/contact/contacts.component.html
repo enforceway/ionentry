@@ -1,0 +1,9 @@
+<contact-header headTitle="所有联系人" isShowCreateButton="true" actionTitle="添加联系人"></contact-header>
+<div class="contact-container">
+    <ul class="list">
+        <li *ngFor="let contact of contacts">
+            <contact-item [contact]="contact"></contact-item>
+        </li>
+    </ul>
+</div>
+<footer [isListPage]="true"></footer>

@@ -1,0 +1,48 @@
+<contact-header headTitle="新增联系人" *ngIf="ifEditMode == false"></contact-header>
+<contact-header headTitle="修改联系人信息" *ngIf="ifEditMode == true"></contact-header>
+<div class="operate">
+    <form #contactForm="ngForm" (ngSubmit)="submitForm()">
+        <ul>
+            <li>
+                <label>姓名：</label>
+                <p>
+                    <input type="text" value="{{contact.name}}" [(ngModel)]="contact.name" name="name">
+                    <i *ngIf="nameTip" [ngClass]="{green: isName, red: !isName}"></i>
+                </p>
+            </li>
+            <li>
+                <label>电话：</label>
+                <p>
+                    <input type="text" value="{{contact.mobile_number}}" [(ngModel)]="contact.mobile_number" name="mobile_number">
+                    <i *ngIf="phoneTip" [ngClass]="{green: isPhoneNum, red: !isPhoneNum}"></i>
+                </p>
+            </li>
+            <li>
+                <label>住址：</label>
+                <p>
+                    <input type="text" value="{{contact.address}}" [(ngModel)]="contact.address" name="address">
+                    <i *ngIf="addrTip" [ngClass]="{green: isAddr, red: !isAddr}"></i>
+                </p>
+            </li>
+            <li>
+                <label>邮箱：</label>
+                <p>
+                <input type="text" value="{{contact.email}}" [(ngModel)]="contact.email" name="email">
+                <i *ngIf="emailTie" [ngClass]="{green: isEmail, red: !isEmail}"></i>
+                </p>
+            </li>
+            <li>
+                <label>生日：</label>
+                <p>
+                    <input type="text" value="{{contact.birthday}}" [(ngModel)]="contact.birthday" name="birthday" placeholder="日期格式如:1990/10/12">
+                    <i *ngIf="birTip" [ngClass]="{green: isBir, red: !isBir}"></i>
+                </p>
+            </li>
+        </ul>
+    </form>
+    <div class="btn">
+        <button type="submit" class="fl" *ngIf="ifEditMode == true" (click)="doSave()">保存</button>
+        <button type="submit" class="fl" *ngIf="ifEditMode == false" (click)="doAdd()">新增</button>
+        <button (click)="cancel()" class="fr">取消</button>
+    </div>
+</div>

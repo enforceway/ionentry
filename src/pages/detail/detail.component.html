@@ -1,0 +1,39 @@
+<div class="detail-contain">
+    <div class="header-detail">
+        <a (click)="goBackToPrevious()" class="back-to-list"><i class="icon-back"></i>所有联系人</a>
+        <a class="edit" [routerLink]="['/edit', this.contact.id]">编辑</a>
+        <!-- (click)="goToEdit()"  -->
+        <div class="name-and-icon">
+            <img src="./images/Iverson.jpg">
+            <span class="contact-name">
+                {{ contact.name }}<i [ngClass]="{collect: contact.if_like == 0 || contact.if_like == null, collected: contact.if_like == 1}" (click)="collectTheContact()"></i>
+            </span>
+        </div>
+    </div>
+
+    <ul class="detail-info">
+        <li>
+            <p>手机号码：</p>
+            <p>{{ contact.mobile_number }}</p>
+        </li>
+        <li>
+            <p>邮箱：</p>
+            <p>{{ contact.email }}</p>
+        </li>
+        <li>
+            <p>生日：</p>
+            <p>{{ contact.birthday | date:'yyyy-MM-dd'}}</p>
+        </li>
+        <li>
+            <p>住址：</p>
+            <p>{{ contact.address }}</p>
+        </li>
+    </ul>
+
+    <article class="intro">
+        <h3>简介:</h3>生活态度好，热爱运动
+    </article>
+</div>
+
+<router-outlet></router-outlet>
+<router-outlet name="aux"></router-outlet>
