@@ -6,7 +6,7 @@ import { NotFoundComponent } from "../pages/notfound";
 import { AlbumComponent } from "../pages/album";
 import { AnnotationComponent } from "../pages/annotation";
 import { EditComponent } from "../pages/edit/edit.component";
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { CanActivateGuard } from "../interceptor/loginCan";
 import { DeCanActivateGuard } from "../interceptor/loginDeCan";
 import { LoginComponent } from "../pages/login/login.component";

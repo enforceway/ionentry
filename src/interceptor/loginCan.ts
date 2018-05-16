@@ -1,4 +1,4 @@
-import { Injectable, Inject } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { XHRService } from "../services/xhr";
 import { Observable } from 'rxjs/Observable';
