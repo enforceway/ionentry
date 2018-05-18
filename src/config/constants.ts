@@ -2,3 +2,4 @@
 import { apiContextPath } from "./apiCfg";
 
 export const apiPath = apiContextPath;
+// export const apiPath = '/api';

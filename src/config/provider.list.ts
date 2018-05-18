@@ -10,7 +10,7 @@ import { interceptorFactory } from "../rebuild/httpFactory";
 // import { ServerURLInterceptor } from "../interceptor/server.interceptor";
 // import { provideInterceptorService } from 'ng2-interceptors';
 // import { WrappedHttp } from "../rebuild/wrapped.http";
-import { Router } from "@angular/router";
+// import { Router } from "@angular/router";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ErrorHandler } from '@angular/core';
@@ -28,7 +28,7 @@ export default [
     // DeCanActivateGuard,
     // ServerURLInterceptor,
     // WrappedHttp,
-    Http,
+    // Http,
     // {
     //     provide: WrappedHttp,
     //     useFactory: interceptorFactory,

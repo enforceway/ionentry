@@ -2,8 +2,10 @@
  * core
 */
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+// import { Router } from "@angular/router";
 import { ContactService } from "../../services/contact.service";
+import { NavController } from 'ionic-angular';
+import { ItemDetailsPage } from '../item-details/item-details';
 // import contacts from "../../data/contacts";
 
 @Component({
@@ -13,9 +15,14 @@ import { ContactService } from "../../services/contact.service";
 })
 export class ContactListComponent implements OnInit {
   private contacts: Array<Object>;
-  constructor(private _router: Router, private _contactSvc: ContactService) {
+  constructor(public navCtrl: NavController, private _contactSvc: ContactService) {
     // console.log("homeom");
     //this._router.navigate(["/"]);
+  }
+  itemTapped(event, item) {
+    this.navCtrl.push(ItemDetailsPage, {
+      item: item
+    });
   }
   ngOnInit() {
     this._contactSvc.getAllContacts().subscribe((allContacts) => {

@@ -19,6 +19,7 @@ export class ContactService {
     }
 
     getContact(contactId: any) {
+        debugger;
         let param: RequestOptsIn = {method: "Get", urlParam: {id: contactId}};
         return this.xhrSvc.request(`${apiPath}/getContactById`, param);
     }

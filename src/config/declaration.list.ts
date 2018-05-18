@@ -16,13 +16,18 @@ import { LoginComponent } from "../pages/login/login.component";
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
+import { TabsTextPage } from "../pages/tabsControl/TabsTextPage";
 
 
 export default [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage,
+    TabsTextPage,
+
+    ContactListComponent,
+    HeaderComponent,
+    // ContactItemComponent
 
 
 

@@ -1,9 +1,19 @@
-<contact-header headTitle="所有联系人" isShowCreateButton="true" actionTitle="添加联系人"></contact-header>
-<div class="contact-container">
+<!-- <contact-header headTitle="所有联系人" isShowCreateButton="true" actionTitle="添加联系人"></contact-header> -->
+<!-- <div class="contact-container">
     <ul class="list">
         <li *ngFor="let contact of contacts">
             <contact-item [contact]="contact"></contact-item>
         </li>
     </ul>
-</div>
-<footer [isListPage]="true"></footer>
+</div> -->
+<!-- <footer [isListPage]="true"></footer> -->
+
+<ion-content>
+    <ion-list>
+        <button ion-item *ngFor="let contact of contacts" (click)="itemTapped($event, contact)">
+            <ion-icon name="{{item.icon}}" item-left></ion-icon>
+            {{contact.name}}
+            <div class="item-note" item-right>{{contact.name}}</div>
+        </button>
+    </ion-list>
+</ion-content>
