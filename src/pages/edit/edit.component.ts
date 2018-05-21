@@ -26,12 +26,12 @@ export class EditComponent implements OnInit {
 
     public doSave() {
         this._contactSvc.updateContact(this.contact).subscribe(() => {
-            // this._location.back();
+            this.navCtrl.pop();
         });
     }
     public doAdd() {
         this._contactSvc.addContact(this.contact).subscribe(() => {
-            // this._location.back();
+            this.navCtrl.pop();
         });
     }
     ngOnInit() {
