@@ -1,4 +1,4 @@
-import { env } from "./env";
+// import { env } from "./env";
 export const apiProtocol = "http://";
 export const apiHost = "localhost";
 export const apiPort = ":3000";

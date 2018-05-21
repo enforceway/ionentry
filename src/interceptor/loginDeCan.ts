@@ -1,7 +1,7 @@
-import { Injectable, Inject } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
-import { XHRService } from "../services/xhr";
-import { Observable } from 'rxjs/Observable';
+// import { XHRService } from "../services/xhr";
+// import { Observable } from 'rxjs/Observable';
 // import { apiPath } from "../config/constants";
 import { EditComponent } from "../pages/edit/edit.component";
 

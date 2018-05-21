@@ -1,19 +1,17 @@
-h3{
-    height: 35px;
-    line-height: 35px;
+h3.brief-header {
     font-size: 16px;
-    color: #ffffff;
     text-align: center;
-    background-color: #3DD689;
     position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
 }
-h3 i {
+h3.brief-header i {
     position: absolute;
     top: 50%;
     right: 10px;
     width: 25px;
     height: 25px;
     transform: translateY(-50%);
-    background: url("./images/add.png") no-repeat;
+    background: url("/assets/images/add.png") no-repeat;
     background-size: cover;
 }

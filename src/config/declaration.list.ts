@@ -6,7 +6,6 @@ import { FavoriteListComponent } from "../pages/favorites";
 import { NotFoundComponent } from "../pages/notfound/notfound.page";
 import { FooterComponent } from "../pages/footer/footer.component";
 import { HeaderComponent } from "../pages/header/header.component";
-import { ContactItemComponent } from "../pages/contact/contact.item";
 import { EditComponent } from "../pages/edit";
 import { PhonePipe } from "../pipes/phone.pipe";
 import { AlbumComponent } from "../pages/album/album.component";
@@ -24,8 +23,10 @@ export default [
     HelloIonicPage,
     ItemDetailsPage,
     TabsTextPage,
-
+    HeaderComponent,
     ContactListComponent,
+    EditComponent,
+    DetailComponent,
     HeaderComponent,
     // ContactItemComponent
 

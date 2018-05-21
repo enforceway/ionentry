@@ -1,0 +1,58 @@
+.detail-portrait {
+    background-color: #3DD689;
+}
+.detail-portrait .detail-portrail {
+    padding: 20px 0px 5px 0px;
+}
+.detail-portrait .detail-portrail img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+.detail-portrait .contact-name {
+    display: block;
+    line-height: 35px;
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    color: #ffffff;
+}
+.detail-portrait .contact-name i {
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    right: 45px;
+    width: 30px;
+    height: 30px;
+}
+.detail-portrait  .contact-name i.collect{
+    background: url("/assets/images/collect.png") no-repeat;
+    background-size: cover;
+}
+.detail-portrait  .contact-name i.collected{
+    background: url("/assets/images/collected.png") no-repeat;
+    background-size: cover;
+}
+.detail-info{
+    padding: 15px 15px 0;
+}
+.detail-info li{
+    width: 100%;
+    min-height: 60px;
+    padding-top: 5px;
+    border-bottom: 1px solid #eaeaea;
+}
+.detail-info li p{
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 5px;
+}
+.detail-intro{
+    padding: 10px 15px 20px 15px;
+}
+.detail-intro h3{
+    font-size: 18px;
+    padding-bottom: 10px;
+}

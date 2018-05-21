@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
 import { ContactService } from "../../services/contact.service";
+import { NavParams, NavController } from 'ionic-angular';
+import { extend } from '../../services/utility';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
 //   styleUrls: ['app/modules/edit/edit.component.css'],
-  selector: 'contact-list',
-  templateUrl: 'edit.component.html'
+    selector: 'contact-list',
+    templateUrl: 'edit.component.html'
 })
 export class EditComponent implements OnInit {
-    private contact: any;
-    private ifEditMode: boolean;
-    constructor(private _location: Location,
-                private _activatedRoute : ActivatedRoute, 
-                private _router: Router,
-                private _contactSvc: ContactService) {
+    private todo : FormGroup;
+    private contact: any = {};
+    private ifEditMode: boolean = false;
+    constructor(private _contactSvc: ContactService,
+                private navParams : NavParams,
+                private formBuilder: FormBuilder,
+                public navCtrl: NavController) {
     }
     public isModified(): boolean {
         console.log('is modiefied is called');
@@ -23,36 +26,47 @@ export class EditComponent implements OnInit {
 
     public doSave() {
         this._contactSvc.updateContact(this.contact).subscribe(() => {
-            this._location.back();
+            // this._location.back();
         });
     }
     public doAdd() {
         this._contactSvc.addContact(this.contact).subscribe(() => {
-            this._location.back();
+            // this._location.back();
         });
     }
     ngOnInit() {
-        this.contact = {};
-        let contactId = this._activatedRoute.snapshot.params["id"];
-        if(contactId != null && contactId != undefined) {
-            this.ifEditMode = true;
-        } else {
+        // this.todo = this.formBuilder.group({
+        //     mobile_number: ['', Validators.required],
+        //     email: [''],
+        //     birthday: [''],
+        //     address: [''],
+        //     description: ['']
+        // });
+        let contact = this.navParams.get("contact");
+        if(!contact) {
             this.ifEditMode = false;
+            return;
         }
-        if(this.ifEditMode == true) {
-            this._contactSvc.getContact(contactId).subscribe((data) => {
-                if(data) {
-                    // 如果取到了数值
-                    this.contact = data;
+
+        extend(this.contact, contact);
+        this.ifEditMode = true;
+        this._contactSvc.getContact(this.contact.id).subscribe((data) => {
+            if(data) {
+                // 如果取到了数值
+                this.contact = data;
+                if(this.contact.birthday) {
+                    let orib = new DatePipe('zh-CN').transform(this.contact.birthday, "yyyy-MM-dd");
+                    this.contact.fBirthday = orib;
                 }
-            });
-        }
+            }
+        });
     }
     public submitForm(): void {
       alert(1231);
     }
     public cancel(): void {
-        this._location.back();
+        this.navCtrl.pop();
+        // this._location.back();
     }
     
 }

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 // import { Router } from "@angular/router";
 import { ContactService } from "../../services/contact.service";
 import { NavController } from 'ionic-angular';
-import { ItemDetailsPage } from '../item-details/item-details';
+import { DetailComponent } from '../detail';
 // import contacts from "../../data/contacts";
 
 @Component({
@@ -20,12 +20,16 @@ export class ContactListComponent implements OnInit {
     //this._router.navigate(["/"]);
   }
   itemTapped(event, item) {
-    this.navCtrl.push(ItemDetailsPage, {
-      item: item
+    this.navCtrl.push(DetailComponent, {
+      contact: item
     });
   }
   ngOnInit() {
     this._contactSvc.getAllContacts().subscribe((allContacts) => {
+        let icons: Array<any> = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane', 'american-football', 'boat', 'bluetooth', 'build'];
+        allContacts.forEach((item: any) => {
+          item.icon = icons[Math.floor(Math.random() * icons.length)]
+        });
         this.contacts = allContacts;
     });
     // .subscribe((data: any) => {

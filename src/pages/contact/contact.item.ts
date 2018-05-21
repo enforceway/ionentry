@@ -2,7 +2,7 @@
  * core
 */
 import { Component, OnInit, EventEmitter, Input } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -15,18 +15,18 @@ export class ContactItemComponent implements OnInit {
     // public goToDetail(): void {
     //     this._router.navigateByUrl("/detail/" + this.contact.id);
     // }
-    constructor(
-        private _router: Router, 
-        private _activatedRoute: ActivatedRoute) {
-
+    constructor() {
+    }
+    ngOnInit() {
+        console.log("initializing contact.item");
     }
     public goToDetail(): void {
-        this._router.navigate(['/detail', this.contact.id, {
-            outlets: {
-                primary: ['album'],
-                aux: ['album']
-            }
-        }]);
+        // this._router.navigate(['/detail', this.contact.id, {
+        //     outlets: {
+        //         primary: ['album'],
+        //         aux: ['album']
+        //     }
+        // }]);
 
         // this._router.navigate(['/detail', this.contact.id, {
         //     before: '2011-01-01', 
@@ -35,8 +35,5 @@ export class ContactItemComponent implements OnInit {
         //     before: '2017-01-01',
         //     after: '2017-01-01'
         // }]);
-    }
-    ngOnInit() {
-        
     }
 }

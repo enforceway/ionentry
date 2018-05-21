@@ -60,7 +60,7 @@ export class XHRService {
         }
         options.search = searchParams;
 
-        let httpRequestor = this._http.get(url, new RequestOptions(options));
+        let httpRequestor = this._http.request(url, new RequestOptions(options));
         return httpRequestor.map(this.extraDataHandle).catch((error) => {
             let errMsg = error.message? error.message: error.status? `$(error.status) - $(error.statusText)` : `Server error`;
             console.error(errMsg);
