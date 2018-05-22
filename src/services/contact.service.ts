@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
+// import { Http } from "@angular/http";
 import { XHRService } from "./xhr";
 import { apiPath } from "../config/constants";
-import { RequestOptsClass, RequestOptsIn } from "../interfaces/request.opts";
+import { RequestOptsIn } from "../interfaces/request.opts";
 
 @Injectable()
 export class ContactService {

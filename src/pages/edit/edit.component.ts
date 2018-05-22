@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from "../../services/contact.service";
 import { NavParams, NavController } from 'ionic-angular';
 import { extend } from '../../services/utility';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -11,12 +10,11 @@ import { DatePipe } from '@angular/common';
     templateUrl: 'edit.component.html'
 })
 export class EditComponent implements OnInit {
-    private todo : FormGroup;
+    // private todo : FormGroup;
     private contact: any = {};
     private ifEditMode: boolean = false;
     constructor(private _contactSvc: ContactService,
                 private navParams : NavParams,
-                private formBuilder: FormBuilder,
                 public navCtrl: NavController) {
     }
     public isModified(): boolean {

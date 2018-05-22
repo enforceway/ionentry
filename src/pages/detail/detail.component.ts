@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Location } from "@angular/common";
 import { ContactService } from '../../services/contact.service';
 import { NavController, NavParams } from 'ionic-angular';
 import { extend } from "../../services/utility";
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EditComponent } from '../edit';
 
 @Component({
@@ -12,9 +10,9 @@ import { EditComponent } from '../edit';
     templateUrl: 'detail.component.html'
 })
 export class DetailComponent implements OnInit, OnDestroy {
-    private todo : FormGroup;
+    // private todo : FormGroup;
     private contact: any = {};
-    constructor(private formBuilder: FormBuilder,
+    constructor(
         public navCtrl: NavController,
         private navParams : NavParams,
         private _contactSvc: ContactService) {

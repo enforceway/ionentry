@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { XHRBackend, Http, RequestOptions, RequestOptionsArgs, Headers, Response, ResponseContentType, RequestMethod, URLSearchParams } from "@angular/http";
+import { Http, RequestOptions, Headers, Response, ResponseContentType, RequestMethod, URLSearchParams } from "@angular/http";
 // import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Rx';
 import { RequestOptsClass, RequestOptsIn} from "../interfaces/request.opts";
@@ -13,7 +13,9 @@ export class XHRService {
     }
 
     extraDataHandle(response: Response) {
+        alert(JSON.stringify(response));
         let res = response.json();
+        alert(JSON.stringify(res));
         return res.data;
     }
 
@@ -39,7 +41,7 @@ export class XHRService {
             url: url,
             headers: new Headers({ 'Content-Type': 'application/json;charset=utf-8' }),
             responseType: ResponseContentType.Json,
-            withCredentials: true,
+            // withCredentials: true,
             body: null,
             search: null
         };
@@ -59,12 +61,12 @@ export class XHRService {
             }
         }
         options.search = searchParams;
-
+        alert(url);
         let httpRequestor = this._http.request(url, new RequestOptions(options));
         return httpRequestor.map(this.extraDataHandle).catch((error) => {
-            let errMsg = error.message? error.message: error.status? `$(error.status) - $(error.statusText)` : `Server error`;
-            console.error(errMsg);
-            return Observable.throw(errMsg); 
+            // let errMsg = error.message? error.message: error.status? `${error.status} - ${error.statusText}` : `Server error`;
+            alert(JSON.stringify(error));
+            return Observable.throw(error); 
             // return error;
         });
     }

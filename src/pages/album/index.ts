@@ -1,1 +1,1 @@
-export * from "./album.component";
+// export * from "./album.component";

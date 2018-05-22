@@ -1,6 +1,4 @@
 import {Component, OnInit, Input} from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-
 
 @Component({
   // styleUrls: ['app/modules/header/header.component.scss'],

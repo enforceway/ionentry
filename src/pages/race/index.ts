@@ -1,1 +1,1 @@
-export * from './race.component';
+// export * from './race.component';

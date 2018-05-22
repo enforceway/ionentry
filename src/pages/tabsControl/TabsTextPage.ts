@@ -1,6 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { TabsTextContentPage } from "./TabsTextContentPage";
-import { ListPage } from "../list/list";
+import { Component } from '@angular/core';
 import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 import { ContactListComponent } from '../contact';
 

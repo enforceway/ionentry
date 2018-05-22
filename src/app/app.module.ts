@@ -2,28 +2,75 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-
+// import declarationList from '../config/declaration.list';
+// import providers from "../config/provider.list";
+import { HttpModule } from '@angular/http';
+// import entryComponents from "../config/entry.component";
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
-// import { ListPage } from '../pages/list/list';
+import { ListPage } from '../pages/list/list';
+import { TabsTextPage } from "../pages/tabsControl/TabsTextPage";
+import { ContactListComponent } from "../pages/contact";
+import { DetailComponent } from "../pages/detail";
+import { HeaderComponent } from "../pages/header/header.component";
+import { EditComponent } from "../pages/edit";
 
-// import { StatusBar } from '@ionic-native/status-bar';
-// import { SplashScreen } from '@ionic-native/splash-screen';
-import declarationList from '../config/declaration.list';
-import providers from "../config/provider.list";
-// import { TabsTextContentPage } from '../pages/tabsControl/TabsTextContentPage';
-import { TabsTextPage } from '../pages/tabsControl/TabsTextPage';
-import { ContactListComponent } from '../pages/contact';
-import { HeaderComponent } from '../pages/header/header.component';
-// import { ContactItemComponent } from '../pages/contact/contact.item';
-import { HttpModule } from '@angular/http';
-import { ContactItemComponent } from '../pages/contact/contact.item';
-import { DetailComponent } from '../pages/detail';
-import { EditComponent } from '../pages/edit';
-import entryComponents from "../config/entry.component";
+// provider Area
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { ErrorHandler } from '@angular/core';
+import { IonicErrorHandler } from 'ionic-angular';
+import { ContactService } from "../services/contact.service";
+import { XHRService } from '../services/xhr';
+// import {HttpClientModule} from '@angular/common/http';
+
+let oneDeclarationList = [
+  MyApp,
+  HelloIonicPage,
+  ItemDetailsPage,
+  TabsTextPage,
+  ListPage,
+  HeaderComponent,
+  ContactListComponent,
+  EditComponent,
+  DetailComponent
+];
+let oneEntryComponentList = [
+  MyApp,
+  HelloIonicPage,
+  ItemDetailsPage,
+  ContactListComponent,
+  EditComponent,
+  DetailComponent,
+  TabsTextPage,
+  HeaderComponent
+];
+let oneProvideList = [
+  StatusBar,
+  SplashScreen,
+  {provide: ErrorHandler, useClass: IonicErrorHandler},
+  ContactService,
+  XHRService,
+  // AlbumService,
+  // CanActivateGuard,
+  // DeCanActivateGuard,
+  // ServerURLInterceptor,
+  // WrappedHttp,
+  // Http,
+  // {
+  //     provide: WrappedHttp,
+  //     useFactory: interceptorFactory,
+  //     deps: [XHRBackend, RequestOptions, Router]
+  // }
+  // provideInterceptorService([
+  //     ServerURLInterceptor
+  // ])
+  // providers: [{ provide: APP_BASE_HREF, useValue: "/app" }],
+]
+
 
 @NgModule({
-  declarations: declarationList,
+  declarations: oneDeclarationList,
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
@@ -35,7 +82,7 @@ import entryComponents from "../config/entry.component";
     HttpModule
   ],
   bootstrap: [IonicApp],
-  entryComponents: entryComponents,
-  providers: providers
+  entryComponents: oneEntryComponentList,
+  providers: oneProvideList
 })
 export class AppModule {}

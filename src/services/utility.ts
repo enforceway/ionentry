@@ -18,7 +18,7 @@ export const isArray = Array.isArray || function(obj) {
 // }
 
 export const extend = (...args) => {
-    let options, name, src, srcType, copy, copyType, copyIsArray, clone,
+    let options, name, src, srcType, copy, copyIsArray, clone,
         target = args[0] || {},
         i = 1,
         length = args.length,
