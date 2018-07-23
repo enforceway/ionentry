@@ -1,22 +1,23 @@
 import { Injectable } from "@angular/core";
-import { Http, RequestOptions, Headers, Response, ResponseContentType, RequestMethod, URLSearchParams } from "@angular/http";
-// import 'rxjs/add/operator/toPromise';
-import { Observable } from 'rxjs/Rx';
+import { RequestMethod } from "@angular/http";
+import 'rxjs/add/operator/toPromise';
+// import { Observable } from 'rxjs/Rx';
 import { RequestOptsClass, RequestOptsIn} from "../interfaces/request.opts";
+import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 // import { InterceptorService } from 'ng2-interceptors';
 // import { WrappedHttp } from "../rebuild/wrapped.http";
+
 @Injectable()
 export class XHRService {
 
-    constructor(private _http: Http) { //InterceptorService
+    constructor(private _http: HttpClient) { //InterceptorService
 
     }
 
-    extraDataHandle(response: Response) {
-        alert(JSON.stringify(response));
-        let res = response.json();
-        alert(JSON.stringify(res));
-        return res.data;
+    extraDataHandle(response: any) {
+        // let res = response.json();
+        // debugger;
+        return response.data;
     }
 
     request(url: string, opts?: RequestOptsIn) {
@@ -24,8 +25,8 @@ export class XHRService {
         if(!opts) {
             opts = new RequestOptsClass();
             opts.method = 'Get';
-            opts.param = {};
-            opts.urlParam = {};
+            // opts.param = {};
+            // opts.urlParam = {};
         }
 
         // 如果传入了参数
@@ -35,15 +36,15 @@ export class XHRService {
             console.error("no support for request type '" + opts.method + "'");
             return;
         }
-        
         let options: any = {
-            method: RequestMethod[opts.method],
-            url: url,
-            headers: new Headers({ 'Content-Type': 'application/json;charset=utf-8' }),
-            responseType: ResponseContentType.Json,
+            // method: RequestMethod[opts.method],
+            // url: url,
+            headers: new HttpHeaders().set("Content-Type", "application/json"),
+            responseType: 'json',
             // withCredentials: true,
-            body: null,
-            search: null
+            // body: null,
+            // params: null,
+            // search: null
         };
 
         // request body params
@@ -52,23 +53,40 @@ export class XHRService {
             // console.log(opts.param);
             options.body = JSON.stringify(opts.param);
         }
-
         // set url param
-        let searchParams = new URLSearchParams();
         if(opts.urlParam) {
+            let searchParams = new HttpParams();
             for(let attr in opts.urlParam) {
                 searchParams.set(attr, opts.urlParam[attr]);
             }
+            options.params = searchParams;
         }
-        options.search = searchParams;
-        alert(url);
-        let httpRequestor = this._http.request(url, new RequestOptions(options));
-        return httpRequestor.map(this.extraDataHandle).catch((error) => {
-            // let errMsg = error.message? error.message: error.status? `${error.status} - ${error.statusText}` : `Server error`;
-            alert(JSON.stringify(error));
-            return Observable.throw(error); 
-            // return error;
-        });
+        let httpRequestor = this._http.request(opts.method, url, (options));
+        let returnedSub: any = {};
+
+        try {
+            alert("url6:" + url);
+            
+            returnedSub = httpRequestor.toPromise().then((data: any) => {
+                alert("succ:" + JSON.stringify(data));
+                return this.extraDataHandle(data);
+            }, (error) => {
+                alert("fail:" + JSON.stringify(error));
+            });
+            /*
+            returnedSub = httpRequestor.map(this.extraDataHandle).catch((error) => {
+                // let errMsg = error.message? error.message: error.status? `${error.status} - ${error.statusText}` : `Server error`;
+                alert(4 + JSON.stringify(error));
+                console.log(JSON.stringify(error));
+                return Observable.throw(error); 
+                // return error;
+            });
+            */
+        } catch(error) {
+            alert(2);
+            alert(error);
+        }
+        return returnedSub;
     }
 
 }

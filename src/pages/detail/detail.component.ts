@@ -49,7 +49,7 @@ export class DetailComponent implements OnInit, OnDestroy {
             return;
         }
         let contactId = this.contact.id;
-        this._contactSvc.getContactWithLikes(contactId).subscribe((data) => {
+        this._contactSvc.getContactWithLikes(contactId).then((data) => {
             if(data.length == 1) {
                 // 如果取到了数值
                 this.contact = extend(data[0]);

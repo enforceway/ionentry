@@ -25,7 +25,7 @@ export class ContactListComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this._contactSvc.getAllContacts().subscribe((allContacts) => {
+    this._contactSvc.getAllContacts().then((allContacts) => {
         let icons: Array<any> = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane', 'american-football', 'boat', 'bluetooth', 'build'];
         allContacts.forEach((item: any) => {
           item.icon = icons[Math.floor(Math.random() * icons.length)]
